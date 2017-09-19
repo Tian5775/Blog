@@ -1,13 +1,13 @@
 var myApp = angular.module('myApp',['ngRoute']);
 myApp.config(function($routeProvider){
 	$routeProvider.
-	when('/index',{
-		templateUrl:'view/index.html'
+	when('/article',{
+		templateUrl:'view/article.html'
 	}).
 	when('/login',{
 		templateUrl:'view/login.html'
 	}).
 	otherwise({
-		redirectTo:'/login'
+		redirectTo:'/article'
 	});
 });

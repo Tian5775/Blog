@@ -13,11 +13,13 @@
 </head>
 
 <body>
-	<nav>
-    
-    </nav>
-	<div id="main" data-ng-app="myApp" data-ng-view>
-    	
+	<div id="main" data-ng-app="myApp">
+        <nav data-ng-include="'view/nav.html'">
+        
+        </nav>
+        <article data-ng-view>
+        
+        </article>
     </div>
 </body>
 </html>
