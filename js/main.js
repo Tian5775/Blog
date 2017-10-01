@@ -5,9 +5,11 @@ myApp.config(function($routeProvider){
 		templateUrl:'view/article.html'
 	}).
 	when('/login',{
-		templateUrl:'view/login.html'
+		templateUrl:'view/login.html',
+		controller:'login'
 	}).
 	otherwise({
 		redirectTo:'/article'
 	});
 });
+
