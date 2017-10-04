@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var express_get = require('./express_get');
+var expressGet = require('./expressGet');
 
 //设置跨域访问
 app.all('*', function(req, res, next) {
@@ -17,4 +17,4 @@ var server =app.listen(8888,function(){
     var port = server.address().port;
 });
 
-express_get.webGet(app);
+expressGet.webGet(app);

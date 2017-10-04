@@ -27,9 +27,9 @@
 .loginPicture{
 	width:100px;
 	height:100px;
-	background:url(../image/camera2.png);	
-	background-size:100px;
-    margin:0 auto 60px;
+	background:url(../image/logo.png) no-repeat;
+	background-size:85px;
+    margin:0 auto 40px;
 }
 
 .loginBtn{
