@@ -10,7 +10,7 @@ define(["app"],function(app){
            }).then(
                function successCallback(response){
                    console.log("登陆成功");
-                   $rootScope.userName = "已登录";
+                   $rootScope.loginName = "已登录";
                },
                function errorCallback(response){
                     console.log("登陆失败");

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/login.css"/>
+</head>
+<body>
+    <div class="login container">
+        <div class="loginForm">
+            <div class="row">
+                <div class="loginPicture">
+                </div>
+            </div>
+            <div class="rows">
+                <input type="text" class="userName form-control" placeholder="用户名" data-ng-model="userName"/>
+            </div>
+            <br>
+            <div class="rows">
+                <input type="text" class="password form-control" placeholder="请输入密码" data-ng-model="userPassword"/>
+            </div>
+            <br>
+            <div class="rows">
+                <input type="text" class="password form-control" placeholder="请再次确认密码" data-ng-model="userPassword"/>
+            </div>
+            <div class="rows">
+                <button class="loginBtn btn btn-info btn-block" data-ng-click="login()">立即注册</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

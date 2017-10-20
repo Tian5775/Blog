@@ -12,13 +12,16 @@ define(['angularAMD', 'angular-route','jquery','bootstrap'],function(angularAMD,
 				controller:'login',
 				controllerUrl:'../js/login.js'
 			}))
+			.when('/registered',angularAMD.route({
+				templateUrl:'view/registered.html'
+			}))
 			.otherwise({
 				redirectTo:'/article'
 			});
 	});
 
 	app.run(function($rootScope){
-		$rootScope.userName = "登录/注册";
+		$rootScope.loginName = "登录/注册";
 	})
 
 	return angularAMD.bootstrap(app);
