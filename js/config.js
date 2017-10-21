@@ -5,6 +5,7 @@ require.config({
         'angular':'../plugin/angular/angular.min',
         'angular-route': '../plugin/angular/angular-route.min',
         'angularAMD': '../plugin/angular/angularAMD.min',
+        'myCookie':'../js/cookie',
         'app':'../js/app'
     },
     shim:{
