@@ -8,9 +8,14 @@
 	<div class="login container">
     	<div class="loginForm">
         	<div class="row">
-            	<div class="loginPicture">       	
+            	<div class="loginPicture">
                 </div>
             </div>
+			<div class="rows">
+				<div class="alert alert-danger" role="alert" data-ng-show="showMessage">
+					<p>{{message}}</p>
+				</div>
+			</div>
         	<div class="rows">
             	<input type="text" class="userName form-control" placeholder="用户名" data-ng-model="userName"/>
             </div>
@@ -18,6 +23,7 @@
         	<div class="rows">
             	<input type="text" class="password form-control" placeholder="密码" data-ng-model="userPassword"/>
             </div>
+			<br>
 			<div class="rows">
             	<button class="loginBtn btn btn-info btn-block" data-ng-click="login()">登录</button>
             </div>

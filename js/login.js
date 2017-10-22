@@ -1,27 +1,34 @@
 define(["app","myCookie"],function(app){
-   app.controller("login",function($scope,$http,$rootScope){
+   app.controller("login",function($scope,$http,$rootScope,$location){
        $scope.num = 11;
        $scope.userName = '';
        $scope.userPassword = '';
+       $scope.showMessage = false;
+       $scope.message = "登陆失败";
        $scope.login = function(){
+           $scope.showMessage = false;
            $http({
                withCredentials: true,
                method:"get",
-               url:"http://localhost:8888/loginIn?userName=" + $scope.userName + "&userPassword=" + $scope.userPassword
+               url:"http://" + $rootScope.url + ":8888/loginIn?userName=" + $scope.userName + "&userPassword=" + $scope.userPassword
            }).then(
                function successCallback(response){
-                   if(response.data && response.data.result ){
-                       if(response.data.result && response.data.result == 1){
+                   if(response.data){
+                       if(response.data.result == 1){
                            $rootScope.loginName = "你好，" + response.data.Name;
-                           setCookie("UserName",response.data.Name,365);
+                           setCookie("UserName",response.data.Name,30);
+                           setCookie("logined",true,30);
                            console.log("登录成功");
-                       }else if(response.data.result && response.data.result == 0){
-                            console.log(response.data.message);
+                           $location.path("/article")
+                       }else if(response.data.result == 0){
+                           console.log(response.data.message);
+                           $scope.showMessage = true;
+                           $scope.message = response.data.message;
                        }
                    }
                },
                function errorCallback(response){
-                    console.log("登陆失败");
+                   $scope.showMessage = true;
                }
            );
        }

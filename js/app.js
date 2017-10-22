@@ -7,6 +7,11 @@ define(['angularAMD', 'angular-route','jquery','bootstrap'],function(angularAMD,
 				controller:'article',
 				controllerUrl:'../js/article.js'
 			}))
+			.when('/nav',angularAMD.route({
+				templateUrl:'view/nav.html',
+				controller:'nav',
+				controllerUrl:'../js/nav.js'
+			}))
 			.when('/login',angularAMD.route({
 				templateUrl:'view/login.html',
 				controller:'login',
@@ -20,8 +25,9 @@ define(['angularAMD', 'angular-route','jquery','bootstrap'],function(angularAMD,
 			});
 	});
 
-	app.run(function($rootScope){
+	app.run(function($rootScope,$location){
 		$rootScope.loginName = "登录/注册";
+		$rootScope.url = $location.host();
 	})
 
 	return angularAMD.bootstrap(app);
