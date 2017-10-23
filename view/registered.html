@@ -8,25 +8,31 @@
     <div class="registered container">
         <div class="registeredForm">
             <div class="row">
-                <div class="registeredHeader"">
+                <div class="registeredHeader">
                     <h1>欢迎加入Tian-Blog!</h1>
                     <h3>请输入您的注册信息</h3>
                 </div>
             </div>
-            <div class="rows">
-                <input type="text" class="userName form-control" placeholder="用户名" data-ng-model="userName"/>
-            </div>
-            <br>
-            <div class="rows">
-                <input type="text" class="password form-control" placeholder="请输入密码" data-ng-model="userPassword"/>
-            </div>
-            <br>
-            <div class="rows">
-                <input type="text" class="password form-control" placeholder="请再次确认密码" data-ng-model="userPassword"/>
-            </div>
-            <div class="rows">
-                <button class="loginBtn btn btn-info btn-block" data-ng-click="login()">立即注册</button>
-            </div>
+
+            <form name="registeredForm" novalidate>
+                <div class="form-group {{usernameStatus}}">
+                    <label class="control-label" for="usernameInput">用户名</label>
+                    <input type="text" class="form-control" id="usernameInput" name="usernameInput" data-ng-model="username" data-ng-blur="usernameBlur()" required/>
+                    <span class="help-block" ng-show="showUsernameMessage">{{usernameMessage}}</span>
+                </div>
+
+                <div class="form-group  {{passwordStatus}}">
+                    <label class="control-label" for="passwordInput">密码</label>
+                    <input type="password" class="form-control" id="passwordInput" name="passwordInput" data-ng-model="password" data-ng-blur="passwordBlur()" required/>
+                    <span class="help-block" ng-show="showPasswordMessage">{{passwordMessage}}</span>
+                </div>
+
+                <div class="form-group  {{confirmStatus}}">
+                    <label class="control-label" for="confirmInput">请再次确认密码</label>
+                    <input type="password" class="form-control" id="confirmInput" name="confirmInput" data-ng-model="confirm" data-ng-blur="confirmBlur()" required/>
+                    <span class="help-block" ng-show="showConfirmMessage">{{confirmMessage}}</span>
+                </div>
+            </form>
         </div>
     </div>
 </body>

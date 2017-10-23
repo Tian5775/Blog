@@ -18,7 +18,9 @@ define(['angularAMD', 'angular-route','jquery','bootstrap'],function(angularAMD,
 				controllerUrl:'../js/login.js'
 			}))
 			.when('/registered',angularAMD.route({
-				templateUrl:'view/registered.html'
+				templateUrl:'view/registered.html',
+				controller:'registered',
+				controllerUrl:'../js/registered.js'
 			}))
 			.otherwise({
 				redirectTo:'/article'
