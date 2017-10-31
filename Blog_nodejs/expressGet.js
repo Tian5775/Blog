@@ -36,8 +36,26 @@ function webGet(app){
 
     });
 
-    app.get('/loginOut',function(req,res){
-        res.send('helloworld');
+    app.get('/checkUsername',function(req,res){
+        if(res.req.query && res.req.query.userName){
+            var Name = res.req.query.userName;
+            var sqlData = "select * from [user] where name='" + Name + "'";
+
+            db.sql(sqlData,function(err,result) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+
+                var data = result.recordset;
+
+                if(data.length > 0){
+                    res.send('{"message":"该用户名已存在!","result":0}');
+                }else{
+                    res.send('{"message":"该用户可以使用!","result":1}');
+                }
+            });
+        }
     });
 }
 

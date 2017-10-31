@@ -18,10 +18,8 @@ define(["app","myCookie"],function(app){
                            $rootScope.loginName = "你好，" + response.data.Name;
                            setCookie("UserName",response.data.Name,30);
                            setCookie("logined",true,30);
-                           console.log("登录成功");
                            $location.path("/article")
                        }else if(response.data.result == 0){
-                           console.log(response.data.message);
                            $scope.showMessage = true;
                            $scope.message = response.data.message;
                        }
