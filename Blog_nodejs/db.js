@@ -1,9 +1,9 @@
 var mssql = require('mssql');
 var db = {};
 var config = {
-    user: 'tian',
-    password: '123',
-    server: 'localhost',
+    user: 'admin',
+    password: '12345678',
+    server: 'blog.cv9ruclo7tyw.ap-southeast-1.rds.amazonaws.com',
     database: 'blog',
     port:'1433'
 };
