@@ -57,6 +57,29 @@ function webGet(app){
             });
         }
     });
+
+    app.get('/registered',function(req,res){
+        if(res.req.query && res.req.query.userName && res.req.query.password){
+            var name = res.req.query.userName;
+            var password = res.req.query.password;
+            var sqlData = "insert into [user] (Name,Password) values ('" + name + "','" + password + "') select * from [user] where Name='" + name + "'";
+
+            db.sql(sqlData,function(err,result) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+
+                var data = result.recordset;
+
+                if(data.length > 0){
+                    res.send('{"message":"欢迎加入Tian-Blog,' + data[0].Name + '","result":1}');
+                }else{
+                    res.send('{"message":"创建用户失败","result":0}');
+                }
+            });
+        }
+    });
 }
 
 exports.webGet = webGet;
