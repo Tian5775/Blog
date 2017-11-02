@@ -14,6 +14,12 @@
                 </div>
             </div>
 
+            <div class="rows">
+                <div class="alert alert-success" role="alert" data-ng-show="showMessage">
+                    <p>{{message}}</p>
+                </div>
+            </div>
+
             <form name="registeredForm" novalidate>
                 <div class="form-group {{usernameStatus}}">
                     <label class="control-label" for="usernameInput">用户名</label>

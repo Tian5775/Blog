@@ -30,7 +30,19 @@ define(['angularAMD', 'angular-route','jquery','bootstrap'],function(angularAMD,
 	app.run(function($rootScope,$location){
 		$rootScope.loginName = "登录/注册";
 		$rootScope.url = $location.host();
-	})
+
+		//在手机界面上点击导航栏后自动收起导航栏
+		$rootScope.menuClick = function(){
+			var navMenu = angular.element(document.querySelector(".navMenu"));
+			if(navMenu.hasClass("in")){
+				navMenu.removeClass("in");
+			}
+		}
+
+		// 路由请求完成
+		$rootScope.$on('$routeChangeSuccess', function() {
+		});
+	});
 
 	return angularAMD.bootstrap(app);
 })

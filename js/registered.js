@@ -1,11 +1,13 @@
 define(["app"],function(app){
-    app.controller("registered",function($scope,$http,$rootScope){
+    app.controller("registered",function($scope,$http,$rootScope,$location,$timeout){
         $scope.username="";
         $scope.password="";
         $scope.confirm = "";
         $scope.usernamePass = false;
         $scope.passwordPass = false;
         $scope.confirmPass = false;
+        $scope.showMessage = false;
+        $scope.message= "";
 
         $scope.usernameBlur = function(){
             $scope.usernameMessage="";
@@ -78,7 +80,14 @@ define(["app"],function(app){
                     url:"http://" + $rootScope.url + ":8888/registered?userName=" + $scope.username + "&password=" + $scope.password
                 }).then(
                     function successCallback(response){
-                        console.log(response);
+                        if(response.data.result){
+                            $scope.showMessage = true;
+                            $scope.message = response.data.message;
+
+                            $timeout(function(){
+                                $location.path("/login");
+                            },3000);
+                        }
                     },
                     function errorCallback(response){
 
