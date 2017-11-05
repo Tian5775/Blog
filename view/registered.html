@@ -39,6 +39,22 @@
                     <span class="help-block" data-ng-hide="confirmPass">{{confirmMessage}}</span>
                 </div>
 
+                <div class="form-group">
+                    <label class="control-label" for="questionSelect">密保问题</label>
+                    <select class="form-control" id="questionSelect" name="questionSelect" data-ng-model="question">
+                        <option value="father">您的父亲的姓名是什么？</option>
+                        <option value="mather">您的母亲的姓名是什么？</option>
+                        <option value="phone">您的电话号码是多少？</option>
+                        <option value="year">您的出生年份是多少？</option>
+                    </select>
+                </div>
+
+                <div class="form-group {{answerStatus}}">
+                    <label class="control-label" for="answerInput">密保答案</label>
+                    <input type="text" class="form-control" id="answerInput" name="answerInput" data-ng-model="answer" data-ng-blur="answerBlur()" required/>
+                    <span class="help-block" data-ng-hide="answerPass">{{answerMessage}}</span>
+                </div>
+
                 <button type="submit" class="btn btn-info btn-block" data-ng-disabled="!(usernamePass && passwordPass && confirmPass)" data-ng-click="registered()">提交</button>
             </form>
         </div>

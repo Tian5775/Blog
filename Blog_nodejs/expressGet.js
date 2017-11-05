@@ -6,7 +6,7 @@ function webGet(app){
         if(res.req.query && res.req.query.userName && res.req.query.userPassword){
             var Name = res.req.query.userName;
             var Password = res.req.query.userPassword;
-            var sqlData = "select * from [user] where name='" + Name + "'";
+            var sqlData = "select Name,Password from [user] where name='" + Name + "'";
             db.sql(sqlData,function(err,result){
                 if (err) {
                     console.log(err);
@@ -62,7 +62,9 @@ function webGet(app){
         if(res.req.query && res.req.query.userName && res.req.query.password){
             var name = res.req.query.userName;
             var password = res.req.query.password;
-            var sqlData = "insert into [user] (Name,Password) values ('" + name + "','" + password + "') select * from [user] where Name='" + name + "'";
+            var question = res.req.query.question;
+            var answer = res.req.query.answer;
+            var sqlData = "insert into [user] (Name,Password,Question,Answer) values ('" + name + "','" + password + "','" + question + "','" + answer + "') select * from [user] where Name='" + name + "'";
 
             db.sql(sqlData,function(err,result) {
                 if (err) {

@@ -3,9 +3,12 @@ define(["app"],function(app){
         $scope.username="";
         $scope.password="";
         $scope.confirm = "";
+        $scope.answer = "";
+        $scope.question = "father";
         $scope.usernamePass = false;
         $scope.passwordPass = false;
         $scope.confirmPass = false;
+        $scope.answerPass = false;
         $scope.showMessage = false;
         $scope.message= "";
 
@@ -40,7 +43,7 @@ define(["app"],function(app){
 
                 }
             );
-        }
+        };
 
         $scope.passwordBlur = function(){
             $scope.passwordMessage="";
@@ -72,12 +75,24 @@ define(["app"],function(app){
             }
         };
 
+        $scope.answerBlur = function(){
+            $scope.answerMessage="";
+            if($scope.answer){
+                $scope.answerStatus = "has-success";
+                $scope.answerPass = true;
+            }else{
+                $scope.answerStatus = "has-error";
+                $scope.answerPass = false;
+                $scope.answerMessage = "密保答案不能为空!";
+            }
+        };
+
         $scope.registered = function(){
-            if($scope.usernamePass && $scope.passwordPass && $scope.confirmPass){
+            if($scope.usernamePass && $scope.passwordPass && $scope.confirmPass && $scope.answerPass){
                 $http({
                     withCredentials: true,
                     method:"get",
-                    url:"http://" + $rootScope.url + ":8888/registered?userName=" + $scope.username + "&password=" + $scope.password
+                    url:"http://" + $rootScope.url + ":8888/registered?userName=" + $scope.username + "&password=" + $scope.password + "&question=" + $scope.qustion  + "&answer=" + $scope.answer
                 }).then(
                     function successCallback(response){
                         if(response.data.result){
