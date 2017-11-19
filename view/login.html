@@ -7,29 +7,33 @@
 <body>
 	<div class="login container">
     	<div class="loginForm">
-        	<div class="row">
-            	<div class="loginPicture">
-                </div>
-            </div>
-			<div class="rows">
+			<div class="form-group">
+				<div class="loginTitle">
+					<span>Tian-Blog</span>
+				</div>
+			</div>
+
+			<div class="form-group">
 				<div class="alert alert-danger" role="alert" data-ng-show="showMessage">
 					<p>{{message}}</p>
 				</div>
 			</div>
-        	<div class="rows">
+
+        	<div class="form-group">
             	<input type="text" class="userName form-control" placeholder="用户名" data-ng-model="userName"/>
             </div>
-			<br>
-        	<div class="rows">
+
+        	<div class="form-group">
             	<input type="password" class="password form-control" placeholder="密码" data-ng-model="userPassword"/>
             </div>
-			<br>
-			<div class="rows">
+
+			<div class="form-group">
             	<button class="loginBtn btn btn-info btn-block" data-ng-click="login()">登录</button>
             </div>
-            <div class="rows">
+
+            <div class="form-group">
             	<a class="registeredBtn btn btn-link" href="#/registered">立即注册</a>
-            	<a class="forgetBtn btn btn-link">忘记密码</a>
+            	<a class="forgetBtn btn btn-link" href="#/forgetPwd">忘记密码</a>
             </div>
         </div>
     </div>

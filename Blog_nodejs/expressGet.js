@@ -52,18 +52,19 @@ function webGet(app){
                 if(data.length > 0){
                     res.send('{"message":"该用户名已存在!","result":0}');
                 }else{
-                    res.send('{"message":"该用户可以使用!","result":1}');
+                    res.send('{"message":"该用户名可以使用!","result":1}');
                 }
             });
         }
     });
 
     app.get('/registered',function(req,res){
-        if(res.req.query && res.req.query.userName && res.req.query.password){
+        if(res.req.query && res.req.query.userName && res.req.query.password && res.req.query.question && res.req.query.answer){
             var name = res.req.query.userName;
             var password = res.req.query.password;
             var question = res.req.query.question;
             var answer = res.req.query.answer;
+
             var sqlData = "insert into [user] (Name,Password,Question,Answer) values ('" + name + "','" + password + "','" + question + "','" + answer + "') select * from [user] where Name='" + name + "'";
 
             db.sql(sqlData,function(err,result) {
@@ -80,6 +81,46 @@ function webGet(app){
                     res.send('{"message":"创建用户失败","result":0}');
                 }
             });
+        } else {
+            res.send('{"message":"请输入完整的信息","result":0}');
+        }
+    });
+
+    app.get('/changePwd',function(req,res){
+        if(res.req.query && res.req.query.userName && res.req.query.password && res.req.query.question && res.req.query.answer) {
+            var name = res.req.query.userName;
+            var password = res.req.query.password;
+            var question = res.req.query.question;
+            var answer = res.req.query.answer;
+
+            db.sql("select * from [user] where name='" + name + "'",function(err,result) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+
+                var data = result.recordset;
+
+                if (data.length > 0){
+                    if(data[0].Question == question && data[0].Answer == answer){
+                        var sqlData = "UPDATE [USER] SET Password='" + password + "' WHERE name='" + name + "'";
+                        db.sql(sqlData,function(err,result){
+                            if (err) {
+                                console.log(err);
+                                return;
+                            }
+
+                            res.send('{"message":"修改密码成功!","result":1}');
+                        });
+                    } else {
+                        res.send('{"message":"输入的密保答案错误，请检查!","result":0}');
+                    }
+                } else {
+                    res.send('{"message":"该用户不存在!","result":0}');
+                }
+            })
+        } else {
+            res.send('{"message":"请输入完整的信息","result":0}');
         }
     });
 }

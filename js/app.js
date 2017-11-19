@@ -22,6 +22,11 @@ define(['angularAMD', 'angular-route','jquery','bootstrap'],function(angularAMD,
 				controller:'registered',
 				controllerUrl:'../js/registered.js'
 			}))
+			.when('/forgetPwd',angularAMD.route({
+				templateUrl:'view/forgetPwd.html',
+				controller:'forgetPwd',
+				controllerUrl:'../js/forgetPwd.js'
+			}))
 			.otherwise({
 				redirectTo:'/article'
 			});

@@ -1,12 +1,12 @@
 .login{
-	background:#106e4b;
+	background:#f2f2f2;
 	width:100%;
 	height:100%;
 	overflow:auto;
 }
 
 .loginForm{
-	max-width:300px;
+	max-width:350px;
 	margin:120px auto 0;
 }
 
@@ -24,17 +24,16 @@
     padding-left: 50px;	
 }
 
-.loginPicture{
-	width:100px;
-	height:100px;
-	background:url(../image/logo.png) no-repeat;
-	background-size:85px;
-    margin:0 auto 40px;
+.loginTitle{
+	margin:0 auto 50px;
 }
 
-.login .btn-link{
-	margin-top:10px;
-	color:#FFF;	
+.loginTitle span{
+	font-size: 55px;
+	font-weight: bold;
+	width: 260px;
+	display: block;
+	margin: 0 auto;
 }
 
 .forgetBtn{

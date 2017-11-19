@@ -1,5 +1,5 @@
 define(["app"],function(app){
-    app.controller("registered",function($scope,$http,$rootScope,$location,$timeout){
+    app.controller("forgetPwd",function($scope,$http,$rootScope,$location,$timeout){
         $scope.username="";
         $scope.password="";
         $scope.confirm = "";
@@ -30,13 +30,13 @@ define(["app"],function(app){
                 url:"http://" + $rootScope.url + ":8888/checkUsername?userName=" + $scope.username
             }).then(
                 function successCallback(response){
-                    if(response.data.result){
+                    if(response.data.result == 0){
                         $scope.usernameStatus = "has-success";
                         $scope.usernamePass = true;
                     }else{
                         $scope.usernameStatus = "has-error";
                         $scope.usernamePass = false;
-                        $scope.usernameMessage = response.data.message;
+                        $scope.usernameMessage = "该用户不存在!";
                     }
                 },
                 function errorCallback(response){
@@ -87,25 +87,26 @@ define(["app"],function(app){
             }
         };
 
-        $scope.registered = function(){
+        $scope.changePwd = function(){
+            $scope.showMessage = false;
             if($scope.usernamePass && $scope.passwordPass && $scope.confirmPass && $scope.answerPass){
                 $http({
                     withCredentials: true,
                     method:"get",
-                    url:"http://" + $rootScope.url + ":8888/registered?userName=" + $scope.username + "&password=" + $scope.password + "&question=" + $scope.question  + "&answer=" + $scope.answer
+                    url:"http://" + $rootScope.url + ":8888/changePwd?userName=" + $scope.username + "&password=" + $scope.password + "&question=" + $scope.question  + "&answer=" + $scope.answer
                 }).then(
                     function successCallback(response){
                         if(response.data.result){
                             $scope.showMessage = true;
                             $scope.message = response.data.message;
 
-                            $timeout(function(){
+                            /*$timeout(function(){
                                 $location.path("/login");
-                            },3000);
+                            },3000);*/
                         }
                     },
                     function errorCallback(response){
-
+                        console.log(response);
                     }
                 );
             }
