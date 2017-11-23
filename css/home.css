@@ -21,12 +21,13 @@
 }
 
 .home-title{
+    color: #fff;
     -webkit-text-stroke: #000 0.5vmin;/*ÎÄ×Ö±ß¿ò*/
     font-size: 14vmin;
     font-weight: 800;
     text-align: center;
-    animation:titleColor 0.5s linear forwards;
-    -webkit-animation:titleColor 0.5s linear forwards;
+    animation:titleColor 0.5s linear forwards 0.2s;
+    -webkit-animation:titleColor 0.5s linear forwards 0.2s;
 }
 
 @keyframes titleColor {
