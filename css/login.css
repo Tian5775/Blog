@@ -1,5 +1,5 @@
 .login{
-	background:#f2f2f2;
+	background:#334054;
 	width:100%;
 	height:100%;
 	overflow:auto;
@@ -28,12 +28,27 @@
 	margin:0 auto 50px;
 }
 
-.loginTitle span{
+.loginTitle p{
+	color: #fff;
 	font-size: 55px;
 	font-weight: bold;
 	width: 260px;
 	display: block;
 	margin: 0 auto;
+}
+
+.loginTitle span{
+	color: #53d192;
+}
+
+.loginBtn{
+	color: #fff;
+	background: #53d192;
+	border-color: #53d192;
+}
+
+.btn-link{
+	color: #53d192;
 }
 
 .forgetBtn{

@@ -2,10 +2,10 @@ define(['angularAMD', 'angular-route','jquery','bootstrap'],function(angularAMD,
 	var app = angular.module('myApp',['ngRoute']);
 	app.config(function($routeProvider){
 		$routeProvider
-			.when('/article',angularAMD.route({
-				templateUrl:'view/article.html',
-				controller:'article',
-				controllerUrl:'../js/article.js'
+			.when('/home',angularAMD.route({
+				templateUrl:'view/home.html',
+				controller:'home',
+				controllerUrl:'../js/home.js'
 			}))
 			.when('/nav',angularAMD.route({
 				templateUrl:'view/nav.html',
@@ -28,7 +28,7 @@ define(['angularAMD', 'angular-route','jquery','bootstrap'],function(angularAMD,
 				controllerUrl:'../js/forgetPwd.js'
 			}))
 			.otherwise({
-				redirectTo:'/article'
+				redirectTo:'/home'
 			});
 	});
 
