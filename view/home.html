@@ -6,8 +6,8 @@
 </head>
 
 <body>
-    <div class="home">
-        <div class="home-page">
+    <div class="home" data-ng-mousewheel="pageChange($event, $delta, $deltaX, $deltaY)">
+        <div class="page" ng-show="pageShow[0]">
             <div class="top">
             </div>
             <div class="bottom">
@@ -24,7 +24,16 @@
             </div>
         </div>
 
-        <div class="home">
+        <div class="page page1" ng-show="pageShow[1]">
+            <button class="testButton" ng-click="test()">隐藏</button>
+            <div class="hideDiv" ng-hide="testHide"></div>
+        </div>
+
+        <div class="page page2" ng-show="pageShow[2]">
+
+        </div>
+
+        <div class="page page3" ng-show="pageShow[3]">
 
         </div>
     </div>

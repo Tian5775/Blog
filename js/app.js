@@ -1,5 +1,5 @@
-define(['angularAMD', 'angular-route','jquery','bootstrap'],function(angularAMD,$,bootstrap){
-	var app = angular.module('myApp',['ngRoute']);
+define(['angularAMD', 'angular-route', 'angular-animate', 'jquery', 'bootstrap'],function(angularAMD,$,bootstrap){
+	var app = angular.module('myApp',['ngRoute','ngAnimate']);
 	app.config(function($routeProvider){
 		$routeProvider
 			.when('/home',angularAMD.route({
@@ -47,6 +47,30 @@ define(['angularAMD', 'angular-route','jquery','bootstrap'],function(angularAMD,
 		// 路由请求完成
 		$rootScope.$on('$routeChangeSuccess', function() {
 		});
+	});
+
+	//注册滚轮事件
+	app.directive('ngMousewheel', function(){
+		return function(scope, element, attrs) {
+
+			/*将 element 滚轮事件传递到 scope 上*/
+			element.on('DOMMouseScroll mousewheel onmousewheel', function (event) {
+				scope.$eval(attrs['ngMousewheel'], {
+					$event: event,
+					$delta: event.delta,
+					$deltaX: event.deltaX,
+					$deltaY: event.deltaY
+				});
+
+				/*通知 scope 有异动发生*/
+				scope.$digest();
+			});
+
+			/*在 destroy 时清除事件注册*/
+			scope.$on('$destroy', function(){
+				element.off('mousewheel');
+			});
+		};
 	});
 
 	return angularAMD.bootstrap(app);

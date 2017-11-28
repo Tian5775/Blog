@@ -4,6 +4,7 @@ require.config({
         'bootstrap':'../plugin/bootstrap/js/bootstrap.min',
         'angular':'../plugin/angular/angular.min',
         'angular-route': '../plugin/angular/angular-route.min',
+        'angular-animate': '../plugin/angular/angular-animate.min',
         'angularAMD': '../plugin/angular/angularAMD.min',
         'myCookie':'../js/cookie',
         'app':'../js/app'
@@ -11,6 +12,7 @@ require.config({
     shim:{
         'bootstrap':['jquery'],
         'angularAMD': ['angular'],
+        'angular-animate': ['angular'],
         'angular-route': ['angular']
     },
     deps:['app']
