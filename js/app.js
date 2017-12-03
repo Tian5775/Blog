@@ -1,4 +1,4 @@
-define(['angularAMD', 'angular-route', 'angular-animate', 'jquery', 'bootstrap'],function(angularAMD,$,bootstrap){
+define(['angularAMD', 'angular-route', 'angular-animate', 'jquery', 'bootstrap', 'myCookie'],function(angularAMD,$,bootstrap){
 	var app = angular.module('myApp',['ngRoute','ngAnimate']);
 	app.config(function($routeProvider){
 		$routeProvider
@@ -33,7 +33,12 @@ define(['angularAMD', 'angular-route', 'angular-animate', 'jquery', 'bootstrap']
 	});
 
 	app.run(function($rootScope,$location){
-		$rootScope.loginName = "登录/注册";
+		var loginName = getCookie("UserName");
+		if(loginName){
+			$rootScope.loginName = "你好，" + loginName;
+		} else {
+			$rootScope.loginName = "登录/注册";
+		}
 		$rootScope.url = $location.host();
 
 		//在手机界面上点击导航栏后自动收起导航栏
@@ -42,6 +47,17 @@ define(['angularAMD', 'angular-route', 'angular-animate', 'jquery', 'bootstrap']
 			if(navMenu.hasClass("in")){
 				navMenu.removeClass("in");
 			}
+		}
+
+		$rootScope.loginBtn = function(){
+			var UserName = getCookie("UserName");
+			if(UserName){
+				$location.path("/home");//暂时跳转到首页，记得改为用户信息页
+			} else {
+				$location.path("/login");
+			}
+			console.log("ok");
+
 		}
 
 		// 路由请求完成

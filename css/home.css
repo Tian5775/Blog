@@ -95,21 +95,11 @@
     background: yellow;
 }
 
-.testButton{
-    margin-top: 100px;
-}
-
-.hideDiv{
-    width: 200px;
-    height: 200px;
-    background: #000;
-}
-
 .ng-hide {
     animation: 2s pageHide;
 }
 
 @keyframes pageHide{
-    from{height: 200px;}
-    to{height: 0;}
+    from{position: absolute;bottom: 0;}
+    to{position: absolute;bottom: 100%;}
 }
