@@ -73,9 +73,9 @@ define(['angularAMD', 'angular-route', 'angular-animate', 'jquery', 'bootstrap',
 			element.on('DOMMouseScroll mousewheel onmousewheel', function (event) {
 				scope.$eval(attrs['ngMousewheel'], {
 					$event: event,
-					$delta: event.delta,
-					$deltaX: event.deltaX,
-					$deltaY: event.deltaY
+					$delta: event.delta || event.originalEvent.delta,
+					$deltaX: event.deltaX || event.originalEvent.deltaX,
+					$deltaY: event.deltaY || event.originalEvent.deltaY
 				});
 
 				/*通知 scope 有异动发生*/
