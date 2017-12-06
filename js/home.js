@@ -46,5 +46,10 @@ define(["app"],function(app){
                 $scope.AmtPage3Color = "Amt-page3-color";
             }
         }
+
+        $scope.touchtest = function($event){
+            console.log("ok");
+            debugger;
+        }
     });
 });
