@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <div class="home" data-ng-mousewheel="pageChange($event, $delta, $deltaX, $deltaY)">
+    <div class="home" data-ng-mousewheel="pageChange($event)">
         <!--页面选择单选框-->
         <form class="pageRadio">
             <input type="radio" id="radio0" ng-model="checkedPage" value="0">
@@ -19,12 +19,12 @@
                 <div class="top">
                 </div>
                 <div class="bottom">
-                    <div class="bottom-main">
+                    <div class="bottom-main {{AmtBottomMain}}">
                     </div>
                 </div>
                 <div class="title">
-                    <div class="home-title top-title">WELCOME TO</div>
-                    <div class="home-title bottom-title">Tian-Blog</div>
+                    <div class="page0-title top-title {{AmtPage0Title}}">WELCOME TO</div>
+                    <div class="page0-title bottom-title {{AmtPage0Title}}">Tian-Blog</div>
                     <div class="cross">
                         <div class="x-div"></div>
                         <div class="y-div"></div>
@@ -33,7 +33,7 @@
             </div>
 
             <div class="page page1">
-                <div class="page1-color"></div>
+                <div class="page1-color {{AmtPage1Color}}"></div>
                 <div class="page1-text"></div>
             </div>
 

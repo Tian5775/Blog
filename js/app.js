@@ -72,10 +72,7 @@ define(['angularAMD', 'angular-route', 'angular-animate', 'jquery', 'bootstrap',
 			/*将 element 滚轮事件传递到 scope 上*/
 			element.on('DOMMouseScroll mousewheel onmousewheel', function (event) {
 				scope.$eval(attrs['ngMousewheel'], {
-					$event: event,
-					$delta: event.delta || event.originalEvent.delta,
-					$deltaX: event.deltaX || event.originalEvent.deltaX,
-					$deltaY: event.deltaY || event.originalEvent.deltaY
+					$event: event
 				});
 
 				/*通知 scope 有异动发生*/

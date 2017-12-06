@@ -8,8 +8,8 @@
     width:100%;
     height:100%;
     position:relative;
-    transition:transform 2s ease-in-out;
-    -webkit-transition:transform 2s ease-in-out;
+    transition:transform 0.8s ease-in-out;
+    -webkit-transition:transform 0.8s ease-in-out;
 }
 
 .pageRadio{
@@ -64,13 +64,16 @@
     width: 100%;
 }
 
-.home-title{
+.page0-title{
     color: #fff;
     -webkit-text-stroke: #000 0.5vmin;/*ÎÄ×Ö±ß¿ò*/
     font-size: 14vmin;
     font-weight: 800;
     text-align: center;
-    animation:titleColor 0.5s linear forwards 0.2s;
+}
+
+.Amt-page0-title{
+    animation:titleColor 0.5s linear forwards 0.8s;
 }
 
 @keyframes titleColor {
@@ -89,7 +92,10 @@
 
 .bottom-main{
     background: #fd0;
-    animation:bottomAmt 0.8s linear forwards 0.5s;
+}
+
+.Amt-bottom-main{
+    animation:bottomAmt 0.8s linear forwards 0.8s;
 }
 
 @keyframes bottomAmt{
@@ -124,7 +130,21 @@
 /*page1*/
 .page1{
     top: 100%;
-    background: yellow;
+}
+
+.page1-color{
+    width: 0;
+    height: 100%;
+    background-color: #fd0;
+}
+
+.Amt-page1-color{
+    animation: AmtPage1Color 0.5s linear forwards 0.8s;
+}
+
+@keyframes AmtPage1Color{
+    0%{width: 0;}
+    100%{width: 50%;}
 }
 
 /*page2*/
