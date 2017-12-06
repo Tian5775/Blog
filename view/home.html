@@ -14,8 +14,8 @@
             <input type="radio" id="radio2" ng-model="checkedPage" value="2">
             <input type="radio" id="radio3" ng-model="checkedPage" value="3">
         </form>
-        <div class="allPage">
-            <div class="page page0" ng-show="pageShow[0]">
+        <div class="allPage {{checkedPageCss}}">
+            <div class="page page0">
                 <div class="top">
                 </div>
                 <div class="bottom">
@@ -32,16 +32,16 @@
                 </div>
             </div>
 
-            <div class="page page1" ng-show="pageShow[1]">
+            <div class="page page1">
                 <div class="page1-color"></div>
                 <div class="page1-text"></div>
             </div>
 
-            <div class="page page2" ng-show="pageShow[2]">
+            <div class="page page2">
 
             </div>
 
-            <div class="page page3" ng-show="pageShow[3]">
+            <div class="page page3">
 
             </div>
         </div>
