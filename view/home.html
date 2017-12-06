@@ -7,11 +7,12 @@
 
 <body>
     <div class="home" data-ng-mousewheel="pageChange($event, $delta, $deltaX, $deltaY)">
+        <!--页面选择单选框-->
         <form class="pageRadio">
-            <input type="radio" id="radio1" ng-model="checkedPage" value="0">
-            <input type="radio" id="radio2" ng-model="checkedPage" value="1">
-            <input type="radio" id="radio3" ng-model="checkedPage" value="2">
-            <input type="radio" id="radio4" ng-model="checkedPage" value="3">
+            <input type="radio" id="radio0" ng-model="checkedPage" value="0">
+            <input type="radio" id="radio1" ng-model="checkedPage" value="1">
+            <input type="radio" id="radio2" ng-model="checkedPage" value="2">
+            <input type="radio" id="radio3" ng-model="checkedPage" value="3">
         </form>
         <div class="allPage">
             <div class="page page0" ng-show="pageShow[0]">

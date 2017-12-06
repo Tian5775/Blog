@@ -32,6 +32,13 @@ define(["app"],function(app){
             } else if ($deltaY < 0 && $scope.checkedPage > 0){
                 $scope.checkedPage --;
             }
+            var allPage = angular.element(document.querySelector('.home .allPage '));
+            for(var i=0;i<4;i++){
+                if(allPage.hasClass("checkPage" + i)){
+                    allPage.removeClass("checkPage" + i);
+                }
+            }
+            allPage.addClass("checkPage" + $scope.checkedPage);
         }
     });
 });
