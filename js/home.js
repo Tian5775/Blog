@@ -10,6 +10,12 @@ define(["app"],function(app){
         //page1动画样式
         $scope.AmtPage1Color = "";
 
+        //page2动画样式
+        $scope.AmtPage2Color = "";
+
+        //page3动画样式
+        $scope.AmtPage3Color = "";
+
         $scope.pageChange = function($event){
             var $deltaY = 0;
             if($event.deltaY){
@@ -28,11 +34,16 @@ define(["app"],function(app){
             $scope.AmtPage0Title = "";
             $scope.AmtBottomMain = "";
             $scope.AmtPage1Color = "";
+            $scope.AmtPage2Color = "";
             if($scope.checkedPage == 0){
                 $scope.AmtPage0Title = "Amt-page0-title";
                 $scope.AmtBottomMain = "Amt-bottom-main";
-            } else if($scope.checkedPage == 1) {
+            } else if ($scope.checkedPage == 1){
                 $scope.AmtPage1Color = "Amt-page1-color";
+            }else if($scope.checkedPage == 2) {
+                $scope.AmtPage2Color = "Amt-page2-color";
+            } else if ($scope.checkedPage == 3){
+                $scope.AmtPage3Color = "Amt-page3-color";
             }
         }
     });
