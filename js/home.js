@@ -1,4 +1,5 @@
-define(["app"],function(app){
+//引入touch模块
+define(["app","angular-touch"],function(app){
     app.controller("home",function($scope){
         $scope.checkedPage = 0;
         $scope.checkedPageCss = "checkedPage0"
@@ -16,7 +17,7 @@ define(["app"],function(app){
         //page3动画样式
         $scope.AmtPage3Color = "";
 
-        $scope.pageChange = function($event){
+        $scope.mousewheelChangePage = function($event){
             var $deltaY = 0;
             if($event.deltaY){
                 $deltaY = $event.deltaY;
@@ -28,6 +29,27 @@ define(["app"],function(app){
             } else if ($deltaY < 0 && $scope.checkedPage > 0){
                 $scope.checkedPage --;
             }
+
+            pageChage();
+        }
+
+        $scope.touchmoveChangePage = function(){
+            var startY = this.startEvent.originalEvent.changedTouches[0].pageY;
+            var endY = event.changedTouches[0].pageY;
+            var $deltaY = startY - endY;
+            console.log("startY:" + this.startEvent.originalEvent.changedTouches[0]);
+            console.log("endY:" + this.startEvent.originalEvent.changedTouches[0]);
+            console.log("$deltaY:" + $deltaY);
+            if($deltaY > 0  && $scope.checkedPage < 3){
+                $scope.checkedPage ++;
+            } else if($deltaY < 0 && $scope.checkedPage > 0){
+                $scope.checkedPage --;
+            }
+
+            pageChage();
+        }
+
+        function pageChage (){
             $scope.checkedPageCss = "checkedPage" + $scope.checkedPage;
 
             //动画样式全部清空
@@ -45,11 +67,6 @@ define(["app"],function(app){
             } else if ($scope.checkedPage == 3){
                 $scope.AmtPage3Color = "Amt-page3-color";
             }
-        }
-
-        $scope.touchtest = function($event){
-            console.log("ok");
-            debugger;
         }
     });
 });

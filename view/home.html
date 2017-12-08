@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <div class="home" data-ng-mousewheel="pageChange($event)" data-ng-touchmove="touchtest($event)">
+    <div class="home" data-ng-mousewheel="mousewheelChangePage($event)" ng-touchMove="touchmoveChangePage()">
         <!--页面选择单选框-->
         <form class="pageRadio">
             <input type="radio" id="radio0" ng-model="checkedPage" value="0">
