@@ -34,19 +34,30 @@ define(["app","angular-touch"],function(app){
         }
 
         $scope.touchmoveChangePage = function(){
-            var startY = this.startEvent.originalEvent.changedTouches[0].pageY;
-            var endY = event.changedTouches[0].pageY;
-            var $deltaY = startY - endY;
-            console.log("startY:" + this.startEvent.originalEvent.changedTouches[0]);
-            console.log("endY:" + this.startEvent.originalEvent.changedTouches[0]);
-            console.log("$deltaY:" + $deltaY);
-            if($deltaY > 0  && $scope.checkedPage < 3){
-                $scope.checkedPage ++;
-            } else if($deltaY < 0 && $scope.checkedPage > 0){
-                $scope.checkedPage --;
-            }
+            if(!this.moveFuncReturn){
+                if(this.startEvent.originalEvent){
+                    var startY = this.startEvent.originalEvent.changedTouches[0].pageY;
+                } else if(this.startEvent.changedTouches){
+                    var startY = this.startEvent.changedTouches[0].pageY;
+                }
 
-            pageChage();
+                if(event.originalEvent){
+                    var endY = event.originalEvent.changedTouches[0].pageY;
+                } else if(event.changedTouches){
+                    var endY = event.changedTouches[0].pageY;
+                }
+
+                var $deltaY = startY - endY;
+                if($deltaY > 0  && $scope.checkedPage < 3){
+                    $scope.checkedPage ++;
+                    this.moveFuncReturn = true;
+                    pageChage();
+                } else if($deltaY < 0 && $scope.checkedPage > 0){
+                    $scope.checkedPage --;
+                    this.moveFuncReturn = true;
+                    pageChage();
+                }
+            }
         }
 
         function pageChage (){
