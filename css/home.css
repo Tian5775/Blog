@@ -225,11 +225,28 @@
 }
 
 .page3-color{
-    width: 50%;
-    height: 2%;
+    width: 5%;
+    height: 60%;
     background-color: #fd0;
     position: absolute;
-    right: 0;
+    top: 20%;
+    left: 15%;
+
+}
+
+.Amt-page3-color{
+    animation: AmtPage3Color 0.5s linear forwards 0.8s;
+    -webkit-animation: AmtPage3Color 0.5s linear forwards 0.8s;
+}
+
+@keyframes AmtPage3Color{
+    0%{width:5%}
+    100%{width: 70%;}
+}
+
+@-webkit-keyframes AmtPage3Color{
+    0%{width: 5%;}
+    100%{width: 70%;}
 }
 
 @media screen and (min-width : 800px){

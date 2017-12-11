@@ -68,12 +68,13 @@ define(["app","angular-touch"],function(app){
             $scope.AmtBottomMain = "";
             $scope.AmtPage1Color = "";
             $scope.AmtPage2Color = "";
+            $scope.AmtPage3Color = "";
             if($scope.checkedPage == 0){
                 $scope.AmtPage0Title = "Amt-page0-title";
                 $scope.AmtBottomMain = "Amt-bottom-main";
             } else if ($scope.checkedPage == 1){
                 $scope.AmtPage1Color = "Amt-page1-color";
-            }else if($scope.checkedPage == 2) {
+            } else if ($scope.checkedPage == 2){
                 $scope.AmtPage2Color = "Amt-page2-color";
             } else if ($scope.checkedPage == 3){
                 $scope.AmtPage3Color = "Amt-page3-color";
