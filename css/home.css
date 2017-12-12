@@ -16,6 +16,39 @@
     display: none;
 }
 
+.page-bottom-logo{
+    position: fixed;
+    top: 91vh;
+    left: 5vw;
+    z-index: 10;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+.cross{
+    width: 8vw;
+    height: 8vh;
+    overflow: hidden;
+    position: fixed;
+    top: 86vh;
+    left: 88vw;
+    z-index: 10;
+}
+
+.cross .y-div{
+    height: 100%;
+    border-left: 2px #000 solid;
+    position: relative;
+    left: 80%;
+}
+
+.cross .x-div{
+    width: 100%;
+    border-top: 2px #000 solid;
+    position: relative;
+    top: 80%;
+}
+
 .checkedPage0{
     transform:translateY(0);
     -webkit-transform:translateY(0);
@@ -117,28 +150,6 @@
     100%{width: 100%;height: 100%;}
 }
 
-.cross{
-    width: 8vw;
-    height: 8vh;
-    overflow: hidden;
-    margin-left: 86vw;
-    margin-top: 18vh;
-}
-
-.cross .y-div{
-    height: 100%;
-    border-left: 2px #000 solid;
-    position: relative;
-    left: 80%;
-}
-
-.cross .x-div{
-    width: 100%;
-    border-top: 2px #000 solid;
-    position: relative;
-    top: 80%;
-}
-
 /*page1*/
 .page1{
     top: 100%;
@@ -179,7 +190,7 @@
 .page1-title{
     text-align: center;
     font: 100% Futura;
-    font-size: 5.5vh;
+    font-size: 7vh;
     font-weight: bold;
     color: #000000;
 }
@@ -189,7 +200,7 @@
     font-size: 2.2vh;
     color: #000;
     padding: 0 20vw;
-    margin-top: 3vh;
+    margin-top: 5vh;
     line-height: 4vh;
 }
 
@@ -227,7 +238,7 @@
 .page3-color{
     width: 5%;
     height: 60%;
-    background-color: #fd0;
+    background: url("../image/orca-header-background.jpg");
     position: absolute;
     top: 20%;
     left: 15%;
@@ -244,6 +255,13 @@
     100%{width: 70%;}
 }
 
+.page3-color-top{
+    width: 100%;
+    height:100%;
+    background-color: #fd0;
+    opacity: 0.7;
+}
+
 @-webkit-keyframes AmtPage3Color{
     0%{width: 5%;}
     100%{width: 70%;}
@@ -251,8 +269,6 @@
 
 @media screen and (min-width : 800px){
     .page1-text{
-        padding: 0 30vw;
-        font-size: 2.6vh;
-        line-height: 4.5vh;
+        padding: 0 35vw;
     }
 }
