@@ -1,4 +1,4 @@
-define(['angularAMD', 'angular-route', 'angular-animate', 'jquery', 'bootstrap', 'myCookie'],function(angularAMD,$,bootstrap){
+define(['jquery', 'editorMd', 'bootstrap', 'angularAMD', 'angular-route', 'angular-animate', 'myCookie'],function($,editormd,bootstrap,angularAMD){
 	var app = angular.module('myApp',['ngRoute','ngAnimate']);
 	app.config(function($routeProvider){
 		$routeProvider
@@ -27,6 +27,16 @@ define(['angularAMD', 'angular-route', 'angular-animate', 'jquery', 'bootstrap',
 				controller:'forgetPwd',
 				controllerUrl:'../js/forgetPwd.js'
 			}))
+			.when('/file',angularAMD.route({
+				templateUrl:'view/file.html',
+				controller:'file',
+				controllerUrl:'../js/file.js'
+			}))
+			.when('/edit',angularAMD.route({
+				templateUrl:'view/edit.html',
+				controller:'edit',
+				controllerUrl:'../js/edit.js'
+			}))
 			.otherwise({
 				redirectTo:'/home'
 			});
@@ -52,11 +62,10 @@ define(['angularAMD', 'angular-route', 'angular-animate', 'jquery', 'bootstrap',
 		$rootScope.loginBtn = function(){
 			var UserName = getCookie("UserName");
 			if(UserName){
-				$location.path("/home");//暂时跳转到首页，记得改为用户信息页
+				$location.path("/edit");//暂时跳转到首页，记得改为用户信息页
 			} else {
 				$location.path("/login");
 			}
-			console.log("ok");
 
 		}
 
