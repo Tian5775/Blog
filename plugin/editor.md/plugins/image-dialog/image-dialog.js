@@ -194,25 +194,25 @@
 	};
 
 	// CommonJS/Node.js
-	if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
+    if (typeof define === "function")  // AMD/CMD/Sea.js
     {
-        module.exports = factory;
-    }
-	else if (typeof define === "function")  // AMD/CMD/Sea.js
-    {
-		if (define.amd) { // for Require.js
+        if (define.amd) { // for Require.js
 
-			define(["editormd"], function(editormd) {
+            define(["editormd"], function(editormd) {
                 factory(editormd);
             });
 
-		} else { // for Sea.js
-			define(function(require) {
+        } else { // for Sea.js
+            define(function(require) {
                 var editormd = require("./../../editormd");
                 factory(editormd);
             });
-		}
-	}
+        }
+    }
+    else if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
+    {
+        module.exports = factory;
+    }
 	else
 	{
         factory(window.editormd);

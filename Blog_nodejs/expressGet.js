@@ -1,6 +1,8 @@
 var db = require('./db');
+var file = require('./expressFile');
 
 function webGet(app){
+
     app.get('/loginIn',function(req,res){
         //确保用户输入了用户名和密码
         if(res.req.query && res.req.query.userName && res.req.query.userPassword){
@@ -122,6 +124,35 @@ function webGet(app){
         } else {
             res.send('{"message":"请输入完整的信息","result":0}');
         }
+    });
+
+    //文件操作
+    app.get('/readdir',function(req,res){
+        var dir = "../lib/md/";
+        file.readdir(dir,function(data){
+            res.send(data);
+        })
+    });
+
+    app.post('/readFile',function(req,res){
+        var dir = "../lib/md/";
+        file.readFile(dir,req,function(data){
+            res.send(data);
+        });
+    });
+
+    app.post('/writeFile',function(req,res){
+        var dir = "../lib/md/";
+        file.writeFile(dir,req,function(data){
+            res.send(data);
+        });
+    });
+
+    app.post('/deleteFile',function(req,res){
+        var dir = "../lib/md/";
+        file.deleteFile(dir,req,function(data){
+            res.send(data);
+        });
     });
 }
 

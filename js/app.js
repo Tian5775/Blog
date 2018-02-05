@@ -1,4 +1,4 @@
-define(['jquery', 'editorMd', 'bootstrap', 'angularAMD', 'angular-route', 'angular-animate', 'myCookie'],function($,editormd,bootstrap,angularAMD){
+define(['jquery', 'bootstrap', 'angularAMD', 'angular-route', 'angular-animate', 'myCookie'],function($,bootstrap,angularAMD){
 	var app = angular.module('myApp',['ngRoute','ngAnimate']);
 	app.config(function($routeProvider){
 		$routeProvider
@@ -57,16 +57,6 @@ define(['jquery', 'editorMd', 'bootstrap', 'angularAMD', 'angular-route', 'angul
 			if(navMenu.hasClass("in")){
 				navMenu.removeClass("in");
 			}
-		}
-
-		$rootScope.loginBtn = function(){
-			var UserName = getCookie("UserName");
-			if(UserName){
-				$location.path("/edit");//暂时跳转到首页，记得改为用户信息页
-			} else {
-				$location.path("/login");
-			}
-
 		}
 
 		// 路由请求完成

@@ -1,0 +1,40 @@
+#layout{
+    padding-top: 80px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    min-width: 900px;
+}
+
+#fileTree{
+    float: left;
+    width: 20%;
+    height: 100%;
+    box-sizing: border-box;
+    border-right: 2px solid #DDDDDD;
+    padding: 10px;
+    font-size: 1.4em;
+    overflow: auto;
+    padding: 10px;
+}
+
+#fileTree ul{
+    padding-left: 30px;
+    font-size: 0.8em;
+}
+
+#fileTree li{
+    padding: 5px;
+    cursor: pointer;
+}
+
+#edit{
+    float: left;
+    /*width: 80%;*/
+    height: 100%;
+}
+
+.editDiv{
+    width: 90%;
+    margin: 0 auto;
+}

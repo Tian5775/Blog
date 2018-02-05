@@ -2,48 +2,33 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../plugin/editor.md/lib/codemirror/addon/fold/foldgutter.css"/>
+    <link rel="stylesheet" type="text/css"  href="../css/edit.css"/>
     <title>edit</title>
 </head>
 <body>
-<div id="layout" style="margin-top:100px;">
-    <div id="test-editormd">
-        <textarea style="display:none;">
-        [TOC]
-
-        #### Disabled options
-
-        - TeX (Based on KaTeX);
-        - Emoji;
-        - Task lists;
-        - HTML tags decode;
-        - Flowchart and Sequence Diagram;
-
-        #### Editor.md directory
-
-            editor.md/
-                    lib/
-                    css/
-                    scss/
-                    tests/
-                    fonts/
-                    images/
-                    plugins/
-                    examples/
-                    languages/
-                    editormd.js
-                    ...
-
-        ```html
-        &lt;!-- English --&gt;
-        &lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
-
-        &lt;!-- 繁體中文 --&gt;
-        &lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
-        ```
-        </textarea>
+<div id="layout">
+    <div id="fileTree">
+        <div class="alert alert-info" role="alert">文件目录</div>
+        <ul class="fileList" data-ng-init="readdir()"></ul>
     </div>
-    <button id="submit" type="submit">提交表单</button>
-    <button id="clear">清空</button>
+    <div id="edit" style="width:80%">
+        <div id="mdTitle" class="editDiv">
+            <div class="form-group">
+                <label class="control-label" for="mdTitleInput">文件标题</label>
+                <input type="text" class="form-control" id="mdTitleInput" name="mdTitleInput" data-ng-model="mdTitle"/>
+            </div>
+            <input type="text" style="display: none" id="mdTitleOld" data-ng-model="mdTitleOld"/><!--存放文件旧标题，用于修改文件标题时比较-->
+        </div>
+        <div id="editormd" data-ng-init="editLoad()">
+            <textarea style="display:none;"></textarea>
+        </div>
+        <div id="editBtn" class="editDiv">
+            <button id="submit" class="btn btn-info" type="submit" data-ng-click="editSubmit()">提交表单</button>
+            <button id="deleteFile" class="btn btn-danger" type="button" data-ng-click="deleteFile()">删除文件</button>
+            <button id="newFile" class="btn btn-info" type="button" data-ng-click="newFile()">新建文件</button>
+        </div>
+    </div>
 </div>
 </body>
 </html>

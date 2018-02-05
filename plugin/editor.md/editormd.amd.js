@@ -2768,7 +2768,7 @@
             var cm       = this.cm;
             var settings = this.settings;
             
-            path = settings.pluginPath + path;
+            path = settings.path + path;
             
             if (typeof define === "function") 
             {            
