@@ -2,9 +2,71 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/file.css"/>
     <title>file</title>
 </head>
 <body>
-    <div style="height: 500px;width: 500px;background: lightyellow;">
+    <div class="file bs-docs-header">
+        <div class="fileHeaderImg"></div>
+        <div class="fileHeaderColor"></div>
+        <div class="fileHeaderText">Tian-Blog</div>
+    </div>
+    <div class="container" data-ng-init="fileLoad()">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="jumbotron">
+                    <h2>GitNode</h2>
+                    <p># Git笔记
+                        [TOC]
+                        ### 相关命令行命令
+                        cd //进入目录
+                        dir //查看当前目录下的文件
+                        clear //清屏
+                        mkdir //新建文件夹
+                        echo >> xxx.txt //新建xxx文本文档</p>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+                </div>
+
+                <div class="jumbotron">
+                    <h1>Hello, world!</h1>
+                    <p>.# Git笔记
+                        [TOC]
+                        ### 相关命令行命令
+                        cd //进入目录
+                        dir //查看当前目录下的文件
+                        clear //清屏
+                        mkdir //新建文件夹
+                        echo >> xxx.txt //新建xxx文本文档</p>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+                </div>
+
+                <!--分页-->
+                <nav aria-label="Page navigation">
+                    <ul class="pager">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col-sm-3 hidden-xs" style="background: red;height: 100px;">
+
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>

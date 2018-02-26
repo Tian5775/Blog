@@ -28,6 +28,11 @@
     cursor: pointer;
 }
 
+#fileTree li:hover{
+    color: #31708f;
+    border-bottom: 1px solid #31708f;
+}
+
 #edit{
     float: left;
     /*width: 80%;*/
