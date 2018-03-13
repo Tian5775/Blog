@@ -18,6 +18,7 @@ define(["app","myCookie"],function(app){
                                $rootScope.loginName = "你好，" + response.data.Name;
                                setCookie("UserName",response.data.Name,30);
                                setCookie("logined",true,30);
+                               setCookie("IsAministrator",response.data.IsAministrator,30);
                                $location.path("/article");
                            }else if(response.data.result == 0){
                                $scope.showMessage = true;

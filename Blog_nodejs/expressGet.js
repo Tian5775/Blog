@@ -8,7 +8,7 @@ function webGet(app){
         if(res.req.query && res.req.query.userName && res.req.query.userPassword){
             var Name = res.req.query.userName;
             var Password = res.req.query.userPassword;
-            var sqlData = "select Name,Password from [user] where name='" + Name + "'";
+            var sqlData = "select Name,Password,IsAministrator from [user] where name='" + Name + "'";
             db.sql(sqlData,function(err,result){
                 if (err) {
                     console.log(err);
@@ -128,8 +128,7 @@ function webGet(app){
 
     //文件操作
     app.get('/readdir',function(req,res){
-        var dir = "../lib/md/";
-        file.readdir(dir,function(data){
+        file.readdir(function(data){
             res.send(data);
         })
     });

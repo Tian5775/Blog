@@ -3,6 +3,7 @@ define(["app","jquery","editormd","imageDialog","emojiDialog","linkDialog","refe
         $scope.fileUlHtml = "";
         $scope.mdTitle = "";
         $scope.mdTitleOld = "";
+        $scope.mdId = "";
 
         $scope.editLoad = function(){
             var UserName = getCookie("UserName");
@@ -32,7 +33,7 @@ define(["app","jquery","editormd","imageDialog","emojiDialog","linkDialog","refe
                         var data = response.data;
                         var thisHtml = "";
                         for(var i = 0; i < data.length; i++){
-                            thisHtml += '<li data-ng-click="fileLiClick($event)">' + data[i] + '</li>';
+                            thisHtml += '<li data-ng-click="fileLiClick($event)" fileId=' + data[i].Id + '>' + data[i].Name + '</li>';
                         }
 
                         var ele = $compile(thisHtml)($scope);//避免li绑定的点击事件失效
@@ -49,9 +50,11 @@ define(["app","jquery","editormd","imageDialog","emojiDialog","linkDialog","refe
 
         $scope.fileLiClick = function(event){
             var title = $(event.target).html();
+            var id = $(event.target).attr("fileId");
 
             $scope.mdTitle = title;
             $scope.mdTitleOld = title;
+            $scope.mdId = id;
 
             $http({
                 withCredentials: true,
@@ -77,6 +80,7 @@ define(["app","jquery","editormd","imageDialog","emojiDialog","linkDialog","refe
         $scope.editSubmit = function(){
             var mdTitle = $scope.mdTitle;
             var mdTitleOld = $scope.mdTitleOld;
+            var mdId = $scope.mdId;
             var md = testEditor.getMarkdown();       // 获取 Markdown 源码
             //var b = testEditor.getHTML();           // 获取 Textarea 保存的 HTML 源码
             //var c = testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 watch 且没有开启 saveHTMLToTextarea 时使用
@@ -89,6 +93,7 @@ define(["app","jquery","editormd","imageDialog","emojiDialog","linkDialog","refe
                 data:{
                     title:mdTitle,
                     oldTitle:mdTitleOld,
+                    Id:mdId,
                     text:md
                 }
             }).then(
@@ -111,6 +116,7 @@ define(["app","jquery","editormd","imageDialog","emojiDialog","linkDialog","refe
 
         $scope.deleteFile = function(){
             var title = $scope.mdTitleOld;
+            var Id = $scope.mdId;
             $.confirm({
                 title: '',
                 content: '确定删除该文件?删除后不能恢复',
@@ -123,7 +129,8 @@ define(["app","jquery","editormd","imageDialog","emojiDialog","linkDialog","refe
                         headers:{'Content-Type': 'application/json'},
                         url:'http://' + $rootScope.url + ':8888/deleteFile',
                         data:{
-                            title:title
+                            title:title,
+                            Id:Id
                         }
                     }).then(
                         function successCallback(response){
