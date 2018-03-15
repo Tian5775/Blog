@@ -50,22 +50,21 @@ file.writeFile = function(dir,req,func){
     var oldTitle = dir + req.body.oldTitle;
     var Id = req.body.Id;
     var text = req.body.text;
+    var Synopsis = text.substr(0,30);
 
     //判断是否修改了文件标题,是的话进行修改
-    //如果是新文件，oldTitle = "",id=""
-    if(oldTitle != "" && title != oldTitle){
-        fs.renameSync(oldTitle,title);
-    }
-
-    fs.writeFileSync(title,text);
-
-    var Synopsis = text.substr(0,30);
+    //如果是新文件,id=""
     if(Id == ""){
         var sqlData = "INSERT INTO dbo.FileList ( Id , Name , CreateTime , Synopsis , UpdateTime , Writer , Remark , IsDelete , IsShow )" +
         "VALUES  ( NEWID() , '" + req.body.title + "' , GETDATE() , '" + Synopsis + "' , GETDATE() , 'tian' , '创建文件' , 0 , 1 )";
     } else {
         var sqlData = "UPDATE dbo.FileList SET Name='" + req.body.title + "',Synopsis='" + Synopsis + "',UpdateTime=GETDATE(),Remark='修改文件' WHERE Id='" + Id + "'";
+        if(title != oldTitle){
+            fs.renameSync(oldTitle,title);
+        }
     }
+
+    fs.writeFileSync(title,text);
 
     db.sql(sqlData,function(err,result){
         if (err) {
@@ -108,5 +107,7 @@ file.deleteFile = function(dir,req,func){
         func(message);
     })*/
 }
+
+file
 
 module.exports = file;

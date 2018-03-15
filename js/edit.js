@@ -157,6 +157,8 @@ define(["app","jquery","editormd","imageDialog","emojiDialog","linkDialog","refe
         $scope.newFile = function(){
             $scope.mdTitle = "";
             $scope.mdTitleOld = "";
+            $scope.mdId = "";
+
             testEditor.cm.setValue("");
         }
     })

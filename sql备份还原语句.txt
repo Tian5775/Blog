@@ -1,0 +1,17 @@
+远程数据库地址：blog.cv9ruclo7tyw.ap-southeast-1.rds.amazonaws.com
+帐号：admin
+密码：12345678
+
+--备份
+exec msdb.dbo.rds_backup_database 
+        @source_db_name='blog', 
+        @s3_arn_to_backup_to='arn:aws:s3:::blog-bak/bak201711235.bak',
+        @overwrite_S3_backup_file=1;
+
+--还原
+exec msdb.dbo.rds_restore_database 
+        @restore_db_name='blog2', 
+        @s3_arn_to_restore_from='arn:aws:s3:::blog-bak/test.bak';
+  
+--状态查询      
+exec msdb.dbo.rds_task_status @db_name='blog';
