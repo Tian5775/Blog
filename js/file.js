@@ -1,6 +1,11 @@
 define(["app","jquery","editormd"],function(app){
     app.controller("file",function($scope,$location,$http,$rootScope,$compile){
         $scope.fileList = [];
+        $scope.nowPageNum = 1;
+        $scope.pageSize = 10;
+        $scope.previousButtonHide = false;
+        $scope.nextButtonHide = false;
+
         $scope.fileLoad = function(){
             $http({
                 withCredentials: true,
@@ -10,9 +15,9 @@ define(["app","jquery","editormd"],function(app){
                 function successCallback(response){
                     if(response.data && response.data.length > 0){
                         $scope.fileList = response.data;
-                        var pageSize = 10;
-                        filePaging(response.data,pageSize);
-                        filePage(response.data,1,pageSize);
+                        filePaging(response.data,$scope.pageSize);
+                        changePage(response.data,1,$scope.pageSize);
+                        $scope.nowPageNum = 1;
                     }
                     return false;
                 },
@@ -30,24 +35,55 @@ define(["app","jquery","editormd"],function(app){
 
         //分页页码
         function filePaging(data,pageSize){
-            var num = Math.ceil(data.length / pageSize);//向上取整
+            var pageLength = Math.ceil(data.length / pageSize);//向上取整
             var html = "";
-            html += '<li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+            html += '<li data-ng-hide="previousButtonHide"><a href="javascript:void(0)" aria-label="Previous" data-ng-click="previousPage()"><span aria-hidden="true">&laquo;</span></a></li>';
 
-            for (var i = 0;i < num ;i ++){
-                var thisHtml = '<li><a href="#">' + ( i + 1) + '</a></li>';
+            for (var i = 0;i < pageLength ;i ++){
+                var thisHtml = '<li><a href="javascript:void(0)" data-ng-click="pageNumClick(' + ( i + 1) + ')">' + ( i + 1) + '</a></li>';
                 html += thisHtml;
             }
 
-            html += '<li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
+            html += '<li data-ng-hide="nextButtonHide"><a href="javascript:void(0)" aria-label="Next" data-ng-click="nextPage()"><span aria-hidden="true">&raquo;</span></a></li>';
 
             var ele = $compile(html)($scope);
             $("ul.pager").html(ele);
         }
 
-        function filePage(data,pageNum,pageSize){
+        $scope.pageNumClick = function(num){
+            if($scope.nowPageNum == num){
+                return false;
+            }
+
+            changePage($scope.fileList,num,$scope.pageSize);
+            $scope.nowPageNum = num;
+        }
+
+        $scope.previousPage = function(){
+            if($scope.nowPageNum == 1){
+                return false;
+            }
+
+            var newPageNum = $scope.nowPageNum - 1;
+            changePage($scope.fileList,newPageNum,$scope.pageSize);
+            $scope.nowPageNum = newPageNum;
+        }
+
+        $scope.nextPage = function(){
+            var pageLength = Math.ceil($scope.fileList.length / $scope.pageSize);
+            if($scope.nowPageNum == pageLength){
+                return false;
+            }
+
+            var newPageNum = $scope.nowPageNum + 1;
+            changePage($scope.fileList,newPageNum,$scope.pageSize);
+            $scope.nowPageNum = newPageNum;
+        }
+
+        function changePage(data,pageNum,pageSize){
             var startNum = (pageNum - 1) * pageSize;
             var stopNum = pageNum * pageSize;
+            stopNum = stopNum < data.length ? stopNum : data.length;
             var html = "";
             for(var i = startNum;i < stopNum;i ++){
                 var thisFile = data[i];
@@ -57,6 +93,17 @@ define(["app","jquery","editormd"],function(app){
 
             var ele = $compile(html)($scope);
             $(".fileList").html(ele);
+            if(pageNum == 1){
+                $scope.previousButtonHide = true;
+            } else if($scope.previousButtonHide){
+                $scope.previousButtonHide = false;
+            }
+            var pageLength = Math.ceil(data.length / pageSize);
+            if(pageNum == pageLength){
+                $scope.nextButtonHide = true;
+            } else if($scope.nextButtonHide){
+                $scope.nextButtonHide = false;
+            }
         }
 
         $scope.openFile = function(event){
