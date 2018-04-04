@@ -87,7 +87,7 @@ define(["app","jquery","editormd"],function(app){
             var html = "";
             for(var i = startNum;i < stopNum;i ++){
                 var thisFile = data[i];
-                thisHtml  = '<div class="jumbotron"><h2>' + thisFile.Name + '</h2><p>' + thisFile.Synopsis + '</p><a class="btn btn-primary btn-lg" href="javascript:void(0)" data-ng-click="openFile($event)" role="button">Learn more</a></p></div>';
+                thisHtml  = '<div class="jumbotron"><h2>' + thisFile.Name + '</h2><p>' + thisFile.Synopsis + '</p><a class="btn btn-primary btn-lg" href="#/detail?fileName=' + thisFile.Name + '" data-ng-click="openFile($event)" role="button">Learn more</a></p></div>';
                 html += thisHtml;
             }
 

@@ -37,6 +37,11 @@ define(['jquery', 'bootstrap', 'angularAMD', 'angular-route', 'angular-animate',
 				controller:'edit',
 				controllerUrl:'../js/edit.js'
 			}))
+			.when('/detail',angularAMD.route({
+				templateUrl:'view/detail.html',
+				controller:'detail',
+				controllerUrl:'../js/detail.js'
+			}))
 			.otherwise({
 				redirectTo:'/home'
 			});

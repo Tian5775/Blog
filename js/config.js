@@ -14,6 +14,7 @@ require.config({
         'jquerySticky':'../plugin/jqueryConfirm/js/jquery.sticky.min',
 
         //editor.mdÒÀÀµÄ£¿é
+        // editor.mdÎÄµµ£ºhttp://pandao.github.io/editor.md/
         'marked': "../plugin/editor.md/lib/marked.min",
         'prettify': "../plugin/editor.md/lib/prettify.min",
         'raphael': "../plugin/editor.md/lib/raphael.min",
