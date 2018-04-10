@@ -36,3 +36,9 @@ function checkCookie()
         }
     }
 }
+
+//É¾³ýcookie
+function deleteCookie(c_name)
+{
+    setCookie(c_name, "", -1);
+}

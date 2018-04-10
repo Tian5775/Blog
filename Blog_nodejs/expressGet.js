@@ -67,7 +67,7 @@ function webGet(app){
             var question = res.req.query.question;
             var answer = res.req.query.answer;
 
-            var sqlData = "insert into [user] (Name,Password,Question,Answer) values ('" + name + "','" + password + "','" + question + "','" + answer + "') select * from [user] where Name='" + name + "'";
+            var sqlData = "insert into [user] (Name,Password,Question,Answer,IsAministrator) values ('" + name + "','" + password + "','" + question + "','" + answer + "',0) select * from [user] where Name='" + name + "'";
 
             db.sql(sqlData,function(err,result) {
                 if (err) {

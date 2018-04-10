@@ -16,9 +16,14 @@ define(["app","myCookie"],function(app){
                        if(response.data){
                            if(response.data.result == 1){
                                $rootScope.loginName = "你好，" + response.data.Name;
+                               $rootScope.hideLoginLi = true;
+                               $rootScope.hideUserLi = false;
                                setCookie("UserName",response.data.Name,30);
                                setCookie("logined",true,30);
                                setCookie("IsAministrator",response.data.IsAministrator,30);
+                               if(response.data.IsAministrator){
+                                   $rootScope.hideEditLi = false;
+                               }
                                $location.path("/article");
                            }else if(response.data.result == 0){
                                $scope.showMessage = true;

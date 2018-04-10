@@ -49,10 +49,22 @@ define(['jquery', 'bootstrap', 'angularAMD', 'angular-route', 'angular-animate',
 
 	app.run(function($rootScope,$location){
 		var loginName = getCookie("UserName");
+		var IsAministrator = getCookie("IsAministrator");
+		$rootScope.loginName = "";
+		$rootScope.hideLoginLi = true;
+		$rootScope.hideUserLi = true;
+		$rootScope.hideEditLi = true;
 		if(loginName){
 			$rootScope.loginName = "你好，" + loginName;
+			$rootScope.hideLoginLi = true;
+			$rootScope.hideUserLi = false;
+			if(IsAministrator){
+				$rootScope.hideEditLi = false;
+			}
 		} else {
-			$rootScope.loginName = "登录/注册";
+			$rootScope.hideLoginLi = false;
+			$rootScope.hideUserLi = true;
+			$rootScope.hideEditLi = true;
 		}
 		$rootScope.url = $location.host();
 
@@ -62,6 +74,17 @@ define(['jquery', 'bootstrap', 'angularAMD', 'angular-route', 'angular-animate',
 			if(navMenu.hasClass("in")){
 				navMenu.removeClass("in");
 			}
+		}
+
+		//退出登录
+		$rootScope.loginOut = function(){
+			$rootScope.loginName = "";
+			$rootScope.hideLoginLi = false;
+			$rootScope.hideUserLi = true;
+			$rootScope.hideEditLi = true;
+			deleteCookie("UserName");
+			deleteCookie("logined");
+			deleteCookie("IsAministrator");
 		}
 
 		// 路由请求完成
