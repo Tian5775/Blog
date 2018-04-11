@@ -42,6 +42,11 @@ define(['jquery', 'bootstrap', 'angularAMD', 'angular-route', 'angular-animate',
 				controller:'detail',
 				controllerUrl:'../js/detail.js'
 			}))
+			.when('/information',angularAMD.route({
+				templateUrl:'view/information.html',
+				controller:'information',
+				controllerUrl:'../js/information.js'
+			}))
 			.otherwise({
 				redirectTo:'/home'
 			});
@@ -85,6 +90,8 @@ define(['jquery', 'bootstrap', 'angularAMD', 'angular-route', 'angular-animate',
 			deleteCookie("UserName");
 			deleteCookie("logined");
 			deleteCookie("IsAministrator");
+
+			$location.path("/home");
 		}
 
 		// 路由请求完成

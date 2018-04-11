@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/information.css"/>
+</head>
+<body>
+<div class="information container" data-ng-init="informationInit()">
+    <div class="informationForm">
+        <div class="row">
+            <div class="informationHeader">
+                <h1>个人资料:</h1>
+            </div>
+        </div>
+
+        <div class="rows">
+            <div class="alert alert-success" role="alert" data-ng-show="showMessage">
+                <p>{{message}}</p>
+            </div>
+        </div>
+
+        <form name="informationForm" novalidate>
+            <div class="form-group {{usernameStatus}}"  data-ng-click="usernameClick()">
+                <label class="control-label" for="usernameInput">用户名</label>
+                <input type="text" class="form-control" id="usernameInput" name="usernameInput" data-ng-model="username" required disabled/>
+                <span class="help-block" data-ng-hide="usernamePass">{{usernameMessage}}</span>
+            </div>
+
+            <div class="form-group  {{passwordStatus}}">
+                <label class="control-label" for="passwordInput">密码</label>
+                <input type="password" class="form-control" id="passwordInput" name="passwordInput" data-ng-model="password" data-ng-blur="passwordBlur()" required/>
+                <span class="help-block" data-ng-hide="passwordPass">{{passwordMessage}}</span>
+            </div>
+
+            <div class="form-group  {{confirmStatus}}">
+                <label class="control-label" for="confirmInput">请再次确认密码</label>
+                <input type="password" class="form-control" id="confirmInput" name="confirmInput" data-ng-model="confirm" data-ng-blur="confirmBlur()" required/>
+                <span class="help-block" data-ng-hide="confirmPass">{{confirmMessage}}</span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="questionSelect">密保问题</label>
+                <select class="form-control" id="questionSelect" name="questionSelect" data-ng-model="question">
+                    <option value="father">您的父亲的姓名是什么？</option>
+                    <option value="mather">您的母亲的姓名是什么？</option>
+                    <option value="phone">您的电话号码是多少？</option>
+                    <option value="year">您的出生年份是多少？</option>
+                </select>
+            </div>
+
+            <div class="form-group {{answerStatus}}">
+                <label class="control-label" for="answerInput">密保答案</label>
+                <input type="text" class="form-control" id="answerInput" name="answerInput" data-ng-model="answer" data-ng-blur="answerBlur()" required/>
+                <span class="help-block" data-ng-hide="answerPass">{{answerMessage}}</span>
+            </div>
+
+            <button type="submit" class="btn btn-info btn-block" data-ng-disabled="!(usernamePass && passwordPass && confirmPass && answerPass)" data-ng-click="information()">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

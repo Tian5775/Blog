@@ -15,13 +15,14 @@ define(["app","myCookie"],function(app){
                    function successCallback(response){
                        if(response.data){
                            if(response.data.result == 1){
-                               $rootScope.loginName = "你好，" + response.data.Name;
+                               var data = response.data.data;
+                               $rootScope.loginName = "你好，" + data.Name;
                                $rootScope.hideLoginLi = true;
                                $rootScope.hideUserLi = false;
-                               setCookie("UserName",response.data.Name,30);
+                               setCookie("UserName",data.Name,30);
                                setCookie("logined",true,30);
-                               setCookie("IsAministrator",response.data.IsAministrator,30);
-                               if(response.data.IsAministrator){
+                               setCookie("IsAministrator",data.IsAministrator,30);
+                               if(data.IsAministrator){
                                    $rootScope.hideEditLi = false;
                                }
                                $location.path("/article");

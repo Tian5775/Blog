@@ -100,9 +100,9 @@ define(["app"],function(app){
                             $scope.showMessage = true;
                             $scope.message = response.data.message;
 
-                            /*$timeout(function(){
+                            $timeout(function(){
                                 $location.path("/login");
-                            },3000);*/
+                            },3000);
                         }
                     },
                     function errorCallback(response){

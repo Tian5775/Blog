@@ -1,7 +1,6 @@
 var db = require('./db');
 var fs = require('fs');
 var file = {};
-var a = "";
 
 //读取目录
 file.readdir = function(func){
@@ -107,7 +106,5 @@ file.deleteFile = function(dir,req,func){
         func(message);
     })*/
 }
-
-file
 
 module.exports = file;
