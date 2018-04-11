@@ -101,6 +101,10 @@ define(["app","jquery","editormd","imageDialog","emojiDialog","linkDialog","refe
                     if(response.data.result == 1){
                         $scope.readdir();
                         $scope.mdTitleOld = $scope.mdTitle;
+                        if(response.data.data && response.data.data.length > 0){
+                            var data = response.data.data[0];
+                            $scope.mdId = data.Id;
+                        }
                         $.alert({
                             title: '',
                             content: '文件保存成功！',

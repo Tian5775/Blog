@@ -55,9 +55,11 @@ file.writeFile = function(dir,req,func){
     //如果是新文件,id=""
     if(Id == ""){
         var sqlData = "INSERT INTO dbo.FileList ( Id , Name , CreateTime , Synopsis , UpdateTime , Writer , Remark , IsDelete , IsShow )" +
-        "VALUES  ( NEWID() , '" + req.body.title + "' , GETDATE() , '" + Synopsis + "' , GETDATE() , 'tian' , '创建文件' , 0 , 1 )";
+            "VALUES  ( NEWID() , '" + req.body.title + "' , GETDATE() , '" + Synopsis + "' , GETDATE() , 'tian' , '创建文件' , 0 , 1 ) " +
+            "SELECT * FROM dbo.FileList WHERE NAME='" + req.body.title + "'";
     } else {
-        var sqlData = "UPDATE dbo.FileList SET Name='" + req.body.title + "',Synopsis='" + Synopsis + "',UpdateTime=GETDATE(),Remark='修改文件' WHERE Id='" + Id + "'";
+        var sqlData = "UPDATE dbo.FileList SET Name='" + req.body.title + "',Synopsis='" + Synopsis + "',UpdateTime=GETDATE(),Remark='修改文件' WHERE Id='" + Id + "'" +
+            "SELECT * FROM dbo.FileList WHERE NAME='" + req.body.title + "'";
         if(title != oldTitle){
             fs.renameSync(oldTitle,title);
         }
@@ -72,7 +74,8 @@ file.writeFile = function(dir,req,func){
             return console.error(err);
         }
 
-        var message = {"message":"写入文件成功","result":1};
+        var data = result.recordset;
+        var message = {"message":"写入文件成功","data":data,"result":1};
         func(message);
     });
 }
